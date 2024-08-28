@@ -23,8 +23,8 @@ def go_dependencies():
         name = "com_github_google_or_tools",
         importpath = "github.com/google/or-tools",
         replace = "github.com/luluz66/or-tools",
-        sum = "h1:0VCF4MHVwJtcIkIkdMphuQQA7vcSw1winOrIQjeyzU8=",
-        version = "v0.0.0-20240828021020-20edc14412fd",
+        sum = "h1:Dx6Ls+NUv5a5qY5Xz3lVr8xZkuAthw56veZybMUlX6A=",
+        version = "v0.0.0-20240828233345-51308206c961",
     )
     go_repository(
         name = "org_golang_google_protobuf",
