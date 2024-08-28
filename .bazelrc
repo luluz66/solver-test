@@ -1,0 +1,8 @@
+common --noenable_bzlmod
+
+common --enable_platform_specific_config=true
+
+common:linux --host_cxxopt=-std=c++17
+common:linux --cxxopt=-std=c++17
+common:linux --cxxopt=-Wno-sign-compare
+common:linux --host_cxxopt=-Wno-sign-compare

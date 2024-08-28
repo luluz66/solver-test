@@ -1,6 +1,23 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
 
+git_repository(
+    name = "bazel_skylib",
+    remote = "https://github.com/bazelbuild/bazel-skylib.git",
+    tag = "1.5.0",
+)
+
+load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+
+bazel_skylib_workspace()
+
+## Bazel rules.
+git_repository(
+    name = "platforms",
+    remote = "https://github.com/bazelbuild/platforms.git",
+    tag = "0.0.9",
+)
+
 http_archive(
     name = "bazel_features",
     sha256 = "cec7fbc7bce6597cf2e83e01ddd9328a1bb057dc1a3092745238f49d3301ab5a",
@@ -78,6 +95,12 @@ rules_proto_setup()
 load("@rules_proto//proto:toolchains.bzl", "rules_proto_toolchains")
 
 rules_proto_toolchains()
+
+# rules_python is loaded by protobuf_deps, but the dependencies of rules_python are not
+# we need to load it here to ensure com_google_protobuf could be used.
+load("@rules_python//python:repositories.bzl", "py_repositories")
+
+py_repositories()
 
 go_rules_dependencies()
 
